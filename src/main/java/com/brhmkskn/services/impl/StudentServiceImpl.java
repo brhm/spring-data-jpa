@@ -1,5 +1,7 @@
 package com.brhmkskn.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,12 @@ public class StudentServiceImpl implements IStudentService {
 		
 		return studentRepository.save(student);
 	}
+
+	@Override
+	public List<Student> getAllStudents() {
+		List<Student> list=studentRepository.findAll();
+		return list;
+	}
+	
 
 }
