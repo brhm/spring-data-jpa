@@ -8,4 +8,5 @@ import com.brhmkskn.entities.Student;
 @Repository
 public interface IStudentRepository  extends JpaRepository<Student, Integer>{
 
+	// write custom queries.
 }
