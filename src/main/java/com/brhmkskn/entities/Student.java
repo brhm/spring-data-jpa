@@ -1,6 +1,6 @@
 package com.brhmkskn.entities;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Locale.IsoCountryCode;
 
 import org.springframework.format.annotation.DateTimeFormat;

@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.brhmkskn.controller.IStudentController;
+import com.brhmkskn.dto.DtoStudent;
+import com.brhmkskn.dto.DtoStudentIU;
 import com.brhmkskn.entities.Student;
 import com.brhmkskn.services.IStudentService;
 
@@ -32,22 +34,29 @@ public class StudentControllerImpl implements IStudentController {
 	// send DTO 
 	@PostMapping(path ="/save")
 	@Override
-	public Student saveStudent(@RequestBody Student student) {
+	public DtoStudent saveStudent(@RequestBody DtoStudentIU student) {
 		return studentService.saveStudent(student);
 	}
 
 
 	@GetMapping(path ="/list")
 	@Override
-	public List<Student> getAllStudents() {
-		List<Student> list=studentService.getAllStudents();
+	public List<DtoStudent> getAllStudents() {
+		List<DtoStudent> list=studentService.getAllStudents();
 		return list;
 	}
 	@GetMapping(path = "/list/{id}")
 	@Override
-	public Student getStudentById(@PathVariable(name = "id") Integer id) {
+	public DtoStudent getStudentById(@PathVariable(name = "id") Integer id) {
 		// TODO Auto-generated method stub
 		return studentService.getStudentById(id);
+	}
+	
+	@GetMapping(path = "/by-name/{name}")
+	@Override
+	public DtoStudent getStudentByName(@PathVariable(name = "name") String name) {
+		// TODO Auto-generated method stub
+		return studentService.getStudentByName(name);
 	}
 
 	@DeleteMapping(path = "/delete/{id}")
@@ -58,7 +67,7 @@ public class StudentControllerImpl implements IStudentController {
 
 	@PutMapping(path = "/update/{id}")
 	@Override
-	public Student updateStudent(@PathVariable(name = "id") Integer id,@RequestBody Student student) {
+	public DtoStudent updateStudent(@PathVariable(name = "id") Integer id,@RequestBody DtoStudentIU student) {
 		// TODO Auto-generated method stub
 		return studentService.updateStudent(id, student);
 	}
