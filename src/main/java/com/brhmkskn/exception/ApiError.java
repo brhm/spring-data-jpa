@@ -11,9 +11,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ApiError {
+public class ApiError<T> {
 	private String id;
 	private Date errorTime;
-	private Map<String, List<String>> errors;
+	private T errors; // generic yapı kuruyoruz. string te olabilir list te olabilir.
 	
 }
