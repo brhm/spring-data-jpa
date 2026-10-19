@@ -1,6 +1,9 @@
 package com.brhmkskn.controller.impl;
 
 import com.brhmkskn.services.impl.StudentServiceImpl;
+
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +37,7 @@ public class StudentControllerImpl implements IStudentController {
 	// send DTO 
 	@PostMapping(path ="/save")
 	@Override
-	public DtoStudent saveStudent(@RequestBody DtoStudentIU student) {
+	public DtoStudent saveStudent(@RequestBody @Valid DtoStudentIU student) {
 		return studentService.saveStudent(student);
 	}
 
