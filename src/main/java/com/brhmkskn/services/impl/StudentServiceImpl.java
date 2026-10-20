@@ -1,7 +1,6 @@
 package com.brhmkskn.services.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,7 +14,6 @@ import com.brhmkskn.entities.Student;
 import com.brhmkskn.repository.IStudentRepository;
 import com.brhmkskn.services.IStudentService;
 
-import lombok.experimental.var;
 
 @Service
 public class StudentServiceImpl implements IStudentService {

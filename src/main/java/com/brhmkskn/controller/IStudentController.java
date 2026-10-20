@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.brhmkskn.dto.DtoStudent;
 import com.brhmkskn.dto.DtoStudentIU;
-import com.brhmkskn.entities.Student;
 
 public interface IStudentController {
 

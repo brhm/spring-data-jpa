@@ -1,7 +1,5 @@
 package com.brhmkskn.controller.impl;
 
-import com.brhmkskn.services.impl.StudentServiceImpl;
-
 import jakarta.validation.Valid;
 
 import java.util.List;
@@ -19,20 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brhmkskn.controller.IStudentController;
 import com.brhmkskn.dto.DtoStudent;
 import com.brhmkskn.dto.DtoStudentIU;
-import com.brhmkskn.entities.Student;
 import com.brhmkskn.services.IStudentService;
 
 @RestController
 @RequestMapping("/rest/api/student")
 public class StudentControllerImpl implements IStudentController {
 
-	private final StudentServiceImpl studentServiceImpl;
 	@Autowired
 	private IStudentService studentService;
-
-	StudentControllerImpl(StudentServiceImpl studentServiceImpl) {
-		this.studentServiceImpl = studentServiceImpl;
-	}
 	
 	// send DTO 
 	@PostMapping(path ="/save")
