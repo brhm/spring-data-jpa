@@ -8,8 +8,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.brhmkskn.dto.DtoCourse;
 import com.brhmkskn.dto.DtoStudent;
 import com.brhmkskn.dto.DtoStudentIU;
+import com.brhmkskn.entities.Course;
 import com.brhmkskn.entities.Student;
 import com.brhmkskn.repository.IStudentRepository;
 import com.brhmkskn.services.IStudentService;
@@ -49,14 +51,24 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public DtoStudent getStudentById(Integer id) {
-		DtoStudent response=new DtoStudent();
+		DtoStudent dtoStudent=new DtoStudent();
 		Optional<Student> optional=studentRepository.findById(id);
-		if(optional.isPresent())
+		if(optional.isEmpty())
+			return null;
+		
+		Student dbStudent=optional.get();
+		BeanUtils.copyProperties(dbStudent, dtoStudent);
+		
+		if(dbStudent.getCourses()!=null && !dbStudent.getCourses().isEmpty())
+			for (Course course: dbStudent.getCourses()) 
 			{
-			BeanUtils.copyProperties(optional.get(), response);
-			 // optional içindeki student gönderir.
+				DtoCourse dtoCourse=new DtoCourse();
+				BeanUtils.copyProperties(course, dtoCourse);
+				
+				dtoStudent.getCourses().add(dtoCourse);
 			}
-		return response;
+	
+		return dtoStudent;
 	}
 	@Override
 	public DtoStudent getStudentByName(String name) {
