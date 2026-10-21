@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiError<T> {
-	private String id;
-	private Date errorTime;
-	private T errors; // generic yapı kuruyoruz. string te olabilir list te olabilir.
+	
+	private Integer Status;
+	private Exception<T> exception; // generic yapı kuruyoruz. string te olabilir list te olabilir.
 	
 }

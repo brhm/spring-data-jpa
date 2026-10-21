@@ -12,6 +12,9 @@ import com.brhmkskn.dto.DtoDepartment;
 import com.brhmkskn.dto.DtoEmployee;
 import com.brhmkskn.entities.Department;
 import com.brhmkskn.entities.Employee;
+import com.brhmkskn.exception.BaseException;
+import com.brhmkskn.exception.ErrorMessage;
+import com.brhmkskn.exception.MessageType;
 import com.brhmkskn.repository.IEmployeeRepository;
 import com.brhmkskn.services.IEmployeeService;
 
@@ -53,8 +56,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		Optional<Employee> optional=employeeRepository.findById(id);
 		
 		if(optional.isEmpty())
-			return null;
-		
+		{
+			throw new BaseException(new ErrorMessage(MessageType.NO_RECORD_EXIST, id.toString()));
+		}
 		Employee employee=optional.get();
 		Department department=employee.getDepartment();
 		
