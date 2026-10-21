@@ -4,11 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.brhmkskn.controller.ICustomerController;
 import com.brhmkskn.controller.IHomeController;
-import com.brhmkskn.dto.DtoCustomer;
 import com.brhmkskn.dto.DtoHome;
-import com.brhmkskn.services.ICustomerService;
 import com.brhmkskn.services.IHomeService;
 
 import org.springframework.web.bind.annotation.GetMapping;

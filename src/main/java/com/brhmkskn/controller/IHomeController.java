@@ -1,6 +1,5 @@
 package com.brhmkskn.controller;
 
-import com.brhmkskn.dto.DtoCustomer;
 import com.brhmkskn.dto.DtoHome;
 
 public interface IHomeController {

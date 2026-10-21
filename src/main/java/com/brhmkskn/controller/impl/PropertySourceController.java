@@ -9,15 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brhmkskn.configuration.GlobalConfigurationProperties;
 import com.brhmkskn.configuration.GlobalProperties;
 import com.brhmkskn.configuration.Server;
-import com.brhmkskn.controller.IAddressController;
 import com.brhmkskn.dto.DataSource;
-import com.brhmkskn.dto.DtoAddress;
-import com.brhmkskn.services.IAddressService;
 
-import lombok.experimental.var;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/rest/api/property")

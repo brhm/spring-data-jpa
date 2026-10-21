@@ -8,20 +8,12 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.brhmkskn.dto.DtoCustomer;
 import com.brhmkskn.dto.DtoDepartment;
 import com.brhmkskn.dto.DtoEmployee;
-import com.brhmkskn.dto.DtoHome;
-import com.brhmkskn.dto.DtoRoom;
-import com.brhmkskn.entities.Customer;
 import com.brhmkskn.entities.Department;
 import com.brhmkskn.entities.Employee;
-import com.brhmkskn.entities.Home;
-import com.brhmkskn.entities.Room;
 import com.brhmkskn.repository.IEmployeeRepository;
-import com.brhmkskn.repository.IHomeRepository;
 import com.brhmkskn.services.IEmployeeService;
-import com.brhmkskn.services.IHomeService;
 
 
 @Service
@@ -51,5 +43,27 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		}
 		
 		return dtoList;
+	}
+
+	@Override
+	public DtoEmployee getEmployeeById(Long id) {
+		DtoEmployee dtoEmployee=new DtoEmployee();
+		DtoDepartment dtoDepartment=new DtoDepartment();
+		
+		Optional<Employee> optional=employeeRepository.findById(id);
+		
+		if(optional.isEmpty())
+			return null;
+		
+		Employee employee=optional.get();
+		Department department=employee.getDepartment();
+		
+		BeanUtils.copyProperties(employee, dtoEmployee);
+		BeanUtils.copyProperties(department, dtoDepartment);
+		
+		dtoEmployee.setDepartment(dtoDepartment);
+			
+		
+		return dtoEmployee;
 	}
 }

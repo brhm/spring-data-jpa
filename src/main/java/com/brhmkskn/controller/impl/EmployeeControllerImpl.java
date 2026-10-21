@@ -11,6 +11,7 @@ import com.brhmkskn.dto.DtoEmployee;
 import com.brhmkskn.services.IEmployeeService;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/rest/api/employee")
 public class EmployeeControllerImpl implements IEmployeeController{
@@ -21,6 +22,12 @@ public class EmployeeControllerImpl implements IEmployeeController{
 	@GetMapping(path="/list")
 	public List<DtoEmployee> getAllEmployees() {
 		return employeeService.getAllEmployees();
+	}
+
+	@GetMapping(path="/list/{id}")
+	@Override
+	public DtoEmployee getEmployeeById(@PathVariable(name = "id") Long id) {
+		return employeeService.getEmployeeById(id);
 	}
 	
 
