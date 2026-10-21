@@ -8,27 +8,30 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brhmkskn.controller.IEmployeeController;
 import com.brhmkskn.dto.DtoEmployee;
+import com.brhmkskn.model.RootEntity;
 import com.brhmkskn.services.IEmployeeService;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 @RequestMapping("/rest/api/employee")
-public class EmployeeControllerImpl implements IEmployeeController{
+public class EmployeeControllerImpl extends RestBaseController  implements IEmployeeController{
 
 	@Autowired
 	private IEmployeeService employeeService;
 	
 	@GetMapping(path="/list")
-	public List<DtoEmployee> getAllEmployees() {
-		return employeeService.getAllEmployees();
+	public RootEntity<List<DtoEmployee>> getAllEmployees() {
+		return ok(employeeService.getAllEmployees());
 	}
 
 	@GetMapping(path="/list/{id}")
 	@Override
-	public DtoEmployee getEmployeeById(@PathVariable(name = "id") Long id) {
-		return employeeService.getEmployeeById(id);
+	public RootEntity<DtoEmployee> getEmployeeById(@PathVariable(name = "id") Long id) {
+		return ok(employeeService.getEmployeeById(id));
 	}
+
+	
 	
 
 }
